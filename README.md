@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/301ef2c9-e7a0-497d-81e2-bde295a4bdb4" alt="Home Page" /> 
+</div>
+
 # 🌍 Turkey Earthquake Tracker
 
 A full-stack web application that visualizes **real-time earthquake data across Turkey** on an interactive SVG map. The **backend (NestJS)** fetches and processes earthquake data from official sources such as **Kandilli Observatory** or **AFAD**,  while the **frontend (Next.js)** displays it dynamically with responsive UI, hover tooltips, and clean visual design.
