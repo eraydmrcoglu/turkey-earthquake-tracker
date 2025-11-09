@@ -34,7 +34,6 @@ export default function DepremHaritasi() {
     fetchData();
   }, []);
 
-  // Hover başlat
   const handleMouseEnter = (event: MouseEvent, cityName: string) => {
     if (hideTimeout.current) clearTimeout(hideTimeout.current);
     setHoveredCity(cityName);
@@ -55,7 +54,6 @@ export default function DepremHaritasi() {
     setCityDepremler(filtered);
   };
 
-  // Hover bırakıldığında (ama biraz gecikmeli)
   const handleMouseLeave = (event: MouseEvent) => {
     hideTimeout.current = setTimeout(() => {
       if (event.target === hoveredPath) {
@@ -65,12 +63,10 @@ export default function DepremHaritasi() {
     }, 400);
   };
 
-  // Tooltip üzerindeyken kapanmasın
   const handleTooltipEnter = () => {
     if (hideTimeout.current) clearTimeout(hideTimeout.current);
   };
 
-  // Tooltip'ten çıkınca kapanabilir
   const handleTooltipLeave = () => {
     hideTimeout.current = setTimeout(() => {
       setHoveredCity(null);
@@ -78,7 +74,6 @@ export default function DepremHaritasi() {
     }, 300);
   };
 
-  // 🔥 Fare harita dışına çıkarsa tooltip’i tamamen kapat
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -136,7 +131,6 @@ export default function DepremHaritasi() {
           }}
         />
 
-        {/* Renk açıklamaları kutusu */}
         <div
           className={`absolute bottom-5 left-[85%] min-w-[220px] bg-white shadow-md rounded-lg p-3 border border-gray-300 transition-all duration-700 transform ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
@@ -158,7 +152,6 @@ export default function DepremHaritasi() {
         </div>
       </div>
 
-      {/* Tooltip (hover + scroll + dışarı çıkınca kapanır) */}
       {hoveredCity && (
         <div
           className="tooltip absolute p-2 rounded-xl bg-white/95 shadow-lg border border-gray-200 transition-all transform scale-100 hover:scale-105"
