@@ -18,17 +18,17 @@ export class DepremService implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    this.logger.log('🚀 Servis başlatıldı, ilk deprem verileri çekiliyor...');
+    this.logger.log('Servis başlatıldı, ilk deprem verileri çekiliyor...');
     await this.fetchAndSaveDepremler();
   }
 
   async fetchDepremData(): Promise<any[]> {
     try {
-      this.logger.log(`🌍 API'den veriler alınıyor: ${this.apiUrl}`);
+      this.logger.log(`API'den veriler alınıyor: ${this.apiUrl}`);
       const response = await firstValueFrom(this.httpService.get(this.apiUrl));
       return response.data.earthquakes;
     } catch (error) {
-      this.logger.error('❌ Deprem verileri çekilemedi:', error);
+      this.logger.error('Deprem verileri çekilemedi:', error);
       return [];
     }
   }
@@ -39,7 +39,7 @@ export class DepremService implements OnModuleInit {
       const depremler = await this.fetchDepremData();
 
       if (!Array.isArray(depremler) || depremler.length === 0) {
-        this.logger.warn('⚠️ Son depremler listesi boş döndü.');
+        this.logger.warn('Son depremler listesi boş döndü.');
         return;
       }
 
@@ -52,12 +52,12 @@ export class DepremService implements OnModuleInit {
       });
 
       if (bugunkuDepremler.length === 0) {
-        this.logger.warn('⚠️ Bugüne ait deprem bulunamadı.');
+        this.logger.warn('Bugüne ait deprem bulunamadı.');
         return;
       }
 
       this.logger.log(
-        `📦 ${bugunkuDepremler.length} adet deprem bulundu, veritabanına kaydediliyor...`,
+        `${bugunkuDepremler.length} adet deprem bulundu, veritabanına kaydediliyor...`,
       );
 
       for (const deprem of bugunkuDepremler) {
@@ -93,7 +93,7 @@ export class DepremService implements OnModuleInit {
 
           await this.depremRepository.save(newDeprem);
           this.logger.log(
-            `✅ Kaydedildi: ${newDeprem.yer} (${newDeprem.buyukluk})`,
+            `Kaydedildi: ${newDeprem.yer} (${newDeprem.buyukluk})`,
           );
         }
       }
@@ -106,7 +106,7 @@ export class DepremService implements OnModuleInit {
         '🧹 Eski veriler temizlendi, güncel deprem verisi hazır.',
       );
     } catch (error) {
-      this.logger.error('❌ Veritabanına kayıt işlemi başarısız:', error);
+      this.logger.error('Veritabanına kayıt işlemi başarısız:', error);
     }
   }
 
