@@ -1,4 +1,4 @@
-# 🌍 Turkiye Earthquake Tracker
+# 🌍 Turkey Earthquake Tracker
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/301ef2c9-e7a0-497d-81e2-bde295a4bdb4" alt="Home Page" /> 
